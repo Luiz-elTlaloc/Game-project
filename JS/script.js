@@ -600,35 +600,36 @@ function changeDiv() {
   }
 }
 
-// function endGame() {
-//   clearInterval(timeInterval)
-//   toggleVisablity("stats");
-//   toggleVisablity("view");
-//   time = 120;
-//   steps = 0;
-//   round = 1;
-//   timeContainer.innerText = "02:00";
-//   stepsContainer.innerText = "0";
-//   makeMaze();
-//   startTimer();
-// }
+function restartGame() {
+  gameCover.classList.toggle("hidden");
+  game.classList.toggle("hidden");
+  restart.classList.toggle("hidden");
+  startButton.classList.toggle("hidden");
+  stats.classList.toggle("hidden");
+
+  if (!game.classList.contains("hidden")) {
+    restart.classList.remove("hidden")
+  }
+ }
 
 function startTimer() {
-    timeInterval = setInterval(function () {
-      if (time > 0) {
-          time--;
+  timeInterval = setInterval(function () {
+    if (time > 0) {
+        time--;
 
 
-          const minutes = Math.floor(time / 60).toString().padStart(2, "0");
-          const seconds = (time % 60).toString().padStart(2, "0");
-          timeContainer.innerText = `${minutes}:${seconds}`;
+        const minutes = Math.floor(time / 60).toString().padStart(2, "0");
+        const seconds = (time % 60).toString().padStart(2, "0");
+        timeContainer.innerText = `${minutes}:${seconds}`;
 
-      } else {
-        // Time's up
-          clearInterval(timeInterval);
-          alert("You ran out of time, you lose!")
-      }
-  }, 1000);
+    } else {
+      // Time's up
+        clearInterval(timeInterval);
+        restart.classList.toggle("hidden")
+        alert("You ran out of time, you lose!")
+        restartGame ();
+    }
+}, 1000);
 }
 
   
