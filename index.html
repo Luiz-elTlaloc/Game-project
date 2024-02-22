@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maze</title>
+  <link rel="stylesheet" href="Styles/grid.css">
+</head>
+<body>
+  <main>
+    <div id = "game-cover">
+      <img src="images/Title opt 2.png" alt="" class="cover-img">
+      <br />
+    </div>
+    <button id="start-button" onclick="changeDiv()">Begin your adventure</button>
+  </main>
+
+  <div id="page">
+
+    <div id="Message-Container">
+      <div id="message">
+        <h1>Congratulations!</h1>
+        <p>You have finished the round!</p>
+        <p id="moves"></p>
+        <input id="okBtn" type="button" onclick="toggleVisablity('Message-Container')" value="Move Forward!" />
+      </div>
+    </div>
+
+    <div id="You-Won">
+      <div id="message">
+        <h1>Congratulations!</h1>
+        <p>You have finished all mazes in time!!!</p>
+        <p id="moves"></p>
+        <input id="okBtn" type="button" onclick="toggleVisablity('You-Won')" value="Start Over!" />
+      </div>
+    </div>
+
+    <br>
+    <!-- <div id="menu">
+      <div class="custom-select">
+        <select id="diffSelect">
+                  <option value="5">Easy</option>
+                  <option value="10">Medium</option>
+                  <option value="15">Hard</option>                                  
+              </select>
+      </div>
+      <input id="startMazeBtn" type="button" onclick="makeMaze()" value="Start" />
+    </div> -->
+
+    <div id="instructions-div">
+      <p>Steps <span id="steps">0</span></p>
+      <p id="instructions">Use arrow keys to move the coder to the Cody Grail!</p>
+      <p>Timer <span id="time">2:00</span></p>
+    </div>
+    <div id="view" class="hidden">
+      <div id="mazeContainer">
+        <canvas id="mazeCanvas" class="border" height="50" width="50"></canvas>
+      </div>
+    </div>
+
+    <div id="lose-container" class="hidden">
+      <h1>You lose!!</h1>
+      <button id="restart-button" onclick="restartGame()">Try again!</button>
+    </div>
+<!--Falta el boton de restart es lo primero que debes hacer, el tiempo sigue corriendo aunque no inicies el juego hay que solucionarlo-->
+  </div>
+
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.18/jquery.touchSwipe.min.js"></script>
+  
+  <script src="JS/script.js"></script>
+</body>
+</html>
