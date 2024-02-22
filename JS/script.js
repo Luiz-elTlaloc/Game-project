@@ -1,4 +1,4 @@
-var mazeCanvas = document.getElementById("mazeCanvas");
+vgitar mazeCanvas = document.getElementById("mazeCanvas");
 var ctx = mazeCanvas.getContext("2d");
 var sprite;
 var finishSprite;
@@ -58,6 +58,8 @@ function rand(max) {
     round++
     // steps += moves
     stepsContainer.innerHTML = `${steps}`
+
+    
     if (round == 4 ) {
       round = 1
       toggleVisablity("You-Won");
@@ -65,7 +67,13 @@ function rand(max) {
       return  
     }
     toggleVisablity("Message-Container");  
+    
+    if(round == 4) {
+      clearInterval(timeInterval);
+    }
+    if (round < 4) {
     makeMaze()
+    }
   }
   
   function toggleVisablity(id) {
@@ -583,9 +591,9 @@ function rand(max) {
       isComplete();
     };
    
-    if(gameCover.classList.contains("hidden")) {
-      startTimer();
-    }//startTimer();
+    // if(gameCover.classList.contains("hidden")) {
+    //   startTimer();
+    // }
   };
 
 function changeDiv() {
@@ -597,7 +605,7 @@ function changeDiv() {
 
   if(gameCover.classList.contains("hidden")) {
     startTimer();
-  }
+  } 
 }
 
 function restartGame() {
@@ -607,29 +615,29 @@ function restartGame() {
   startButton.classList.toggle("hidden");
   stats.classList.toggle("hidden");
 
-  if (!game.classList.contains("hidden")) {
-    restart.classList.remove("hidden")
+  if (game.classList.contains("hidden")) {
+    //restart.classList.remove("hidden")
+    startTimer()
   }
- }
+}
 
 function startTimer() {
-  timeInterval = setInterval(function () {
-    if (time > 0) {
-        time--;
-
-
-        const minutes = Math.floor(time / 60).toString().padStart(2, "0");
-        const seconds = (time % 60).toString().padStart(2, "0");
-        timeContainer.innerText = `${minutes}:${seconds}`;
-
-    } else {
-      // Time's up
-        clearInterval(timeInterval);
-        restart.classList.toggle("hidden")
-        alert("You ran out of time, you lose!")
-        restartGame ();
-    }
-}, 1000);
+  time = 120
+  clearInterval(timeInterval)
+    timeInterval = setInterval(function () {
+      if (time > 0) {
+          time--;
+          const minutes = Math.floor(time / 60).toString().padStart(2, "0");
+          const seconds = (time % 60).toString().padStart(2, "0");
+          timeContainer.innerText = `${minutes}:${seconds}`;
+      } else {
+        // Time's up
+          clearInterval(timeInterval);
+          restart.classList.toggle("hidden")
+          alert("You ran out of time, you lose!")
+          restartGame()
+      }
+  }, 1000);
 }
 
   
@@ -660,7 +668,7 @@ function startTimer() {
     } else if (round == 2) {
       difficulty = "12"
     } else if (round == 3) {
-      difficulty = "19"
+      difficulty = "20"
     } else if (round == 4) {
       console.log("You won!!!!!!!")
     }   
