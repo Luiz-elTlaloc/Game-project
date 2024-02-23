@@ -1,4 +1,4 @@
-vgitar mazeCanvas = document.getElementById("mazeCanvas");
+var mazeCanvas = document.getElementById("mazeCanvas");
 var ctx = mazeCanvas.getContext("2d");
 var sprite;
 var finishSprite;
